@@ -1,29 +1,27 @@
 import pygame
-from constants import TILE_SIZE
+from constants import TILE_SIZE,DEFAULT_TERRAIN
 
 class Terrain:
     """
     definit les caractéristiques d'un type de terrain
     """
-    def __init__(self,name,color,traction,drift_threshold,drift_friction):
+    def __init__(self,name,color):
         self.name=name
         self.color=color
-        self.traction=traction
-        self.drift_threshold=drift_threshold
-        self.drift_friction=drift_friction
 #definition des types de terrains
-road=Terrain("route",(85,87,95),1.0,0.8,1.0)
-grass=Terrain("herbe",(34,157,80),0.6,0.4,0.8)
-dirt=Terrain("terre",(145,74,32),0.6,0.3,0.5)
-ice=Terrain("glace",(145,211,229),0.3,0.1,0.05)
-void=Terrain("vide",(41,41,52),0.0,0.0,0.0)
+road=Terrain("route",(85,87,95))
+grass=Terrain("herbe",(34,157,80))
+dirt=Terrain("terre",(145,74,32))
+ice=Terrain("glace",(145,211,229))
+void=Terrain("vide",(41,41,52))
 
 class RoadTile:
 
-    def __init__(self, col: int, row: int,terrain=road,block=None):
+    def __init__(self, col: int, row: int,terrain=None,block=None):
         self.col = col
         self.row = row
-        self.terrain=terrain
+        terrains={"road":road, "grass":grass,"dirt":dirt,"ice":ice,"void":void}
+        self.terrain=terrain if terrain is not None else terrains[DEFAULT_TERRAIN]
         self.block=block
         self.sprite: pygame.Surface | None = None
 
