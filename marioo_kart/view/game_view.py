@@ -12,6 +12,8 @@ class GameView:
     def __init__(self, screen: pygame.Surface):
         self.screen = screen
         self.font = pygame.font.SysFont("Arial", 24)
+        # on ajoute une police plus grande pour le titre du jeu on est passe de 24 a 50
+        self.font_titre = pygame.font.SysFont("Arial", 50, bold=True)
 
     def draw(self, model: GameModel) -> None:
         self.screen.fill(COLOR_BG)
@@ -24,8 +26,8 @@ class GameView:
     def _draw_menu(self, model: GameModel) -> None:
         cx = WINDOW_WIDTH // 2
 
-        title_surf = self.font.render(
-            "Jeu de course 2D", True, COLOR_ACCENT)
+        # On affiche le titre avec la grande  police
+        title_surf = self.font_titre.render("JEU DE COURSE 2D", True, COLOR_ACCENT)
         self.screen.blit(title_surf, title_surf.get_rect(center=(cx, 160)))
 
         options = [("JOUER (Enter)", GameState.RACING),
@@ -39,6 +41,19 @@ class GameView:
             text_surf = self.font.render(
                 label, True, COLOR_ACCENT if i == 0 else COLOR_TEXT)
             self.screen.blit(text_surf, text_surf.get_rect(center=rect.center))
+        
+        # Rappel des touche pour les 2 joueur en bas du menu
+        texte_j1 = self.font.render(
+            "Joueur 1 : Z Q S D", True, COLOR_TEXT)
+        texte_j2 = self.font.render(
+            "Joueur 2 : Fleches du clavier", True, COLOR_TEXT)
+        
+
+        self.screen.blit(
+            texte_j1, texte_j1.get_rect(center=(cx, 500)))
+        self.screen.blit(
+            texte_j2, texte_j2.get_rect(center=(cx, 540)))
+
 
     def _draw_racing(self, model: GameModel) -> None:
 
