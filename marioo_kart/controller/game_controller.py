@@ -52,7 +52,12 @@ class GameController:
         if self.model.state != GameState.RACING:
             return
 
-        p1_input = self.input_handler.get_inputs()
+        # les commandes du joueur 1(ZQSD)
+        p1_input = self.input_handler.get_inputs(self.input_handler.joueur1)
+
+        # commandes du joueur 2(les flesh)
+        
+        p2_input = self.input_handler.get_inputs(self.input_handler.joueur2)
         car = self.model.car
         self.apply_input(car, p1_input)
         self.model.update()
