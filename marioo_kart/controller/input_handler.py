@@ -3,18 +3,18 @@ import pygame
 
 # Les touches utilisees par le joueur 1 (ZQSD)
 touches_joueur1 = {
-    pygame.K_z: "accelerer",
-    pygame.K_s: "freiner",
-    pygame.K_q: "gauche",
-    pygame.K_d: "droite"
+    pygame.K_z: "accelerate",
+    pygame.K_s: "brake",
+    pygame.K_q: "left",
+    pygame.K_d: "right"
 }
 
 # Les touches utilisees par le joueur 2 (les fleches)
 touches_joueur2 = {
-    pygame.K_UP: "accelerer",
-    pygame.K_DOWN: "freiner",
-    pygame.K_LEFT: "gauche",
-    pygame.K_RIGHT: "droite"
+    pygame.K_UP: "accelerate",
+    pygame.K_DOWN: "brake",
+    pygame.K_LEFT: "left",
+    pygame.K_RIGHT: "right"
 }
 
 
